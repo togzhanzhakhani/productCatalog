@@ -32,14 +32,14 @@ const CartScreen = ({ navigation, route }) => {
       <ScrollView>
         <Text style={styles.title}>Ваша корзина</Text>
         <View style={styles.itemsContainer}>
-          {cartItems.map((item) => (
-            <CartItem
-              key={item.id}
-              item={item}
-              handleIncrement={() => handleIncrement(item.id)}
-              handleDecrement={() => handleDecrement(item.id)}
-            />
-          ))}
+        {cartItems.filter(item => item.quantity > 0).map((item) => (
+          <CartItem
+            key={item.id}
+            item={item}
+            handleIncrement={() => handleIncrement(item.id)}
+            handleDecrement={() => handleDecrement(item.id)}
+          />
+        ))}
         </View>
         <View style={styles.optionContainer}>
         <Text style={styles.optionText}>Нужна микроволновая печь?</Text>
