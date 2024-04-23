@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
         flex: 1, 
       },
     }),
+    paddingBottom: 150,
   },
   logo: {
     width: 100,
@@ -132,6 +133,10 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignItems: 'center', 
     padding: 10,
+    position: 'absolute',
+    bottom: 50,
+    left: 0,
+    right: 0,
   },
 
 });
