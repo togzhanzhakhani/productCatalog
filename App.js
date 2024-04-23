@@ -6,7 +6,6 @@ import CartScreen from './Cart';
 import store from './store';
 import { Provider } from 'react-redux';
 
-
 const Stack = createStackNavigator();
 
 const App = () => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Switch } from 'react-native';
+import { ScrollView, View, Text, Pressable, StyleSheet, Switch } from 'react-native';
 import CartItem from './CartItem';
 
 const CartScreen = ({ navigation, route }) => {
@@ -59,9 +59,9 @@ const CartScreen = ({ navigation, route }) => {
         </View>
       </ScrollView>
       <View style={styles.bc}>
-        <TouchableOpacity style={styles.payButton}>
+        <Pressable style={styles.payButton}>
           <Text style={styles.payButtonText}>Оплатить через kaspi.kz</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </View>
   );

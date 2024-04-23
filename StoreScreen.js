@@ -1,8 +1,9 @@
-import { SafeAreaView, Text, ScrollView, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Image, Pressable } from 'react-native';
 import ProductItem from './ProductItem';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateCart } from './actions';
+import { Platform } from 'react-native';
 
 const products = {
   'Напитки': [
@@ -56,14 +57,14 @@ export default function StoreScreen({ navigation, route }) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
+    <View style={styles.container}>
+      <ScrollView style={styles.scrollView}>
         <Image
           source={require('./assets/logo.png')}
           style={styles.logo}
         />
         {Object.keys(products).map(category => (
-          <SafeAreaView key={category}>
+          <View key={category}>
             <Text style={styles.categoryTitle}>{category}</Text>
             {products[category].map(product => (
               <ProductItem
@@ -74,15 +75,15 @@ export default function StoreScreen({ navigation, route }) {
               onUpdateCart={handleUpdateCart}
             />            
             ))}
-          </SafeAreaView>
+          </View>
         ))}
       </ScrollView>
-      <SafeAreaView style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.buyButton} onPress={handleOpenCart} >
+      <View style={styles.buttonContainer}>
+        <Pressable style={styles.buyButton} onPress={handleOpenCart} >
           <Text style={styles.buyButtonText}>{quantities} за {totalPrice} KZT</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-    </SafeAreaView>
+        </Pressable>
+      </View>
+    </View>
   );
 }
 
@@ -90,6 +91,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+  },
+  scrollView: {
+    ...Platform.select({
+      web: {
+        overflowY: 'auto',
+        height: '100vh',
+      },
+      default: {
+        flex: 1, 
+      },
+    }),
   },
   logo: {
     width: 100,
@@ -119,6 +131,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignItems: 'center', 
+    padding: 10,
   },
 
 });

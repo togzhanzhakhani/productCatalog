@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, Image, View, Text, StyleSheet } from 'react-native';
+import { Pressable, Image, View, Text, StyleSheet } from 'react-native';
 
 export default function ProductItem({ product, updateTotalPrice, updateQuantities, onUpdateCart }) {
   const [quantity, setQuantity] = useState(0);
@@ -29,7 +29,7 @@ export default function ProductItem({ product, updateTotalPrice, updateQuantitie
 
 
   return (
-    <TouchableOpacity style={styles.container}>
+    <Pressable style={styles.container}>
       <Image source={product.image} style={styles.image} />
       <View style={styles.details}>
         <Text style={styles.name}>{product.name}</Text>
@@ -37,15 +37,15 @@ export default function ProductItem({ product, updateTotalPrice, updateQuantitie
         <Text style={styles.price}>{product.price} KZT</Text>
       </View>
       <View style={styles.quantityContainer}>
-        <TouchableOpacity onPress={handleDecrement} style={styles.button}>
+        <Pressable onPress={handleDecrement} style={styles.button}>
           <Text style={styles.buttonText}>-</Text>
-        </TouchableOpacity>
+        </Pressable>
         <Text style={styles.quantity}>{quantity}</Text>
-        <TouchableOpacity onPress={handleIncrement} style={styles.button}>
+        <Pressable onPress={handleIncrement} style={styles.button}>
           <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 

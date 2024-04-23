@@ -1,24 +1,24 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
 
 const CartItem = ({ item, handleIncrement, handleDecrement }) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <Pressable style={styles.container}>
       <View style={styles.details}>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.description}>{item.description}</Text>
         <Text style={styles.price}>{item.price} KZT</Text>
       </View>
       <View style={styles.quantityContainer}>
-        <TouchableOpacity onPress={handleDecrement} style={styles.button}>
+        <Pressable onPress={handleDecrement} style={styles.button}>
           <Text style={styles.buttonText}>-</Text>
-        </TouchableOpacity>
+        </Pressable>
         <Text style={styles.quantity}>{item.quantity}</Text>
-        <TouchableOpacity onPress={handleIncrement} style={styles.button}>
+        <Pressable onPress={handleIncrement} style={styles.button}>
           <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
